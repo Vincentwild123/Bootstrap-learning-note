@@ -1,1 +1,983 @@
-dhaoadada
+<!DOCTYPE html>
+<!-- 设置网页按照H5标准被浏览器解析 -->
+<html lang="zh-CN">
+<!-- 设置页面语言为中文d -->
+
+<head>
+    <meta charset="utf-8">
+    <!-- 设定网页字符集 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 响应式设计，用于计算设备屏幕宽度 -->
+    <!-- maximum-scale=1,user-scalable=no  设置是否可以缩放 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap</title>
+    <!-- CDN引入 Bootstrap -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- 引入自定义css文件，作为微小修改-->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- 
+        作者备注：
+        本页面为学习bootstrap而整理的笔记，可能不够全面，但可以作为初学者查询类名用，html文档内有详细注释，大部分是官方文档复制，
+        浏览器打开看具体效果 + html页面一起使用效果更佳哦！
+        测试环境：火狐浏览器
+        欢迎大家
+        联系我共同学习，本人微信：jun2652711477 为在校大二学生   date：2019.11.29   by：vincent
+     -->
+</head>
+<!-- data-offset  data-target  data-spy 为滑动监听的属性，还不熟悉的可以跳过，放在这里只是作为页面导航  -->
+
+<body data-offset="0" data-target="#selector" data-spy="scroll">
+    <!-- CSS全局样式 -->
+    <div class="container">
+        <!-- 布局容器，自适应屏幕大小，移动设备优先
+           1.container容器居中布局
+           2.container-flued 全拼布局
+        -->
+        <!--1.栅格系统:将屏幕宽度分成一样得12份
+            1.row应该放在布局容器中
+            2.只有列可以作为row的直接子元素
+            3.媒体查询:@media
+            /* 超小屏幕（手机，小于 768px） */ 相关类:col-xs-
+            /* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+
+            /* 小屏幕（平板，大于等于 768px） */ 相关类:col-sm-
+            @media (min-width: @screen-sm-min) { ... }
+
+            /* 中等屏幕（桌面显示器，大于等于 992px） */ 相关类；col-md-
+            @media (min-width: @screen-md-min) { ... }
+
+            /* 大屏幕（大桌面显示器，大于等于 1200px） */ 相关类:col-lg-
+            @media (min-width: @screen-lg-min) { ... }
+
+            建议使用:col-md-* （*为小于12整数，表示占地大小）
+            可以使用多种类定义设置不同分辨率的设备
+            当列数大于12将新杞一行  
+        -->
+        <div id="top" class="jumbotron">
+            <!-- jumbotron类 将修饰为巨幕 用于div上-->
+            <h2><strong>前端学习笔记之：Bootstrap</strong></h2>
+            <blockquote class="blockquote-reverse">
+                <footer><cite>Vincent</cite></footer>
+            </blockquote>
+        </div>
+        <hr>
+        <!-- 栅格系统  相关类：row：行   col-*-*:   -->
+        <h1 id="name1">栅格系统</h1>
+        <hr>
+        <div class="row">
+            <h3>基本：相关类：row:行 col-xs/sm/md/lg-N:每个元素所占大小 N为正整数 每行都被分成12块</h3>
+            <h4>例子1：同行每个元素占4块</h4>
+            <div class="col-md-4">col-md-4</div>
+            <div class="col-md-4">col-md-4</div>
+            <div class="col-md-4">col-md-4</div>
+        </div>
+        <div class="row">
+            <h4>例子2：同行每个元素占6块 </h4>
+            <div class="col-md-6">col-md-6</div>
+            <div class="col-md-6">col-md-6</div>
+        </div>
+        <hr>
+        <!-- 列偏移 col-md-offset-* -->
+        <h3>列偏移 相关类：col-xs/sm/md/lg-offset-N </h3>
+        <div class="row">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+            <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+        </div>
+        <hr>
+        <!-- 嵌套列 -->
+
+        <!-- Level 1: .col-sm-9
+        Level 2: .col-xs-8 .col-sm-6
+        Level 2: .col-xs-4 .col-sm-6 -->
+        <h3>嵌套列:每个行内元素(col-*-*)可以再嵌套行(row)</h3>
+        <div class="row">
+            <!-- 第一行 第一个元素 -->
+            <div class="col-sm-9">
+                外层行 元素1: .col-sm-9
+                <!-- 行中行 -->
+                <div class="row">
+                    <div class="col-xs-8 col-sm-6">
+                        内层行 元素1 .col-xs-8 .col-sm-6
+                    </div>
+                    <div class="col-xs-4 col-sm-6">
+                        内层行 元素2 .col-xs-4 .col-sm-6
+                    </div>
+                </div>
+            </div>
+            <!-- 第一行 第二个元素 -->
+            <div class="col-sm-3">外层行 元素2 col-sm-3 </div>
+        </div>
+
+        <hr>
+        <h3>列排序 相关类： col-xs/sm/md/lg-pull-N:向前移 col-xs/sm/md/lg-push-N：向后移</h3>
+        <div class="row">
+            <!-- 注意顺序！！-->
+            <h4>排序前 没有添加排序相关类</h4>
+            <div class="col-md-9">第一个元素 .col-md-9</div>
+            <div class="col-md-3">第二个元素 .col-md-3</div>
+        </div>
+        <div class="row">
+            <!-- 注意顺序！！-->
+            <h4>排序后 添加了排序相关类</h4>
+            <div class="col-md-9 col-md-push-3">第一个元素.col-md-9 .col-md-push-3</div>
+            <div class="col-md-3 col-md-pull-9">第二个元素 .col-md-3 .col-md-pull-9</div>
+        </div>
+        <hr>
+
+        <!-- 兼容常规标签 -->
+        <h1 id="name2">兼容的常规标签</h1>
+        <hr>
+        <!-- 标题 -->
+        <h3>标题:h3-h6</h3>
+        <h3>h3. Bootstrap heading</h3>
+        <h3>h3. Bootstrap heading</h3>
+        <h3>h3. Bootstrap heading</h3>
+        <h4>h4. Bootstrap heading</h4>
+        <h5>h5. Bootstrap heading</h5>
+        <h6>h6. Bootstrap heading</h6>
+        <hr>
+        <!-- small 标记副标题 -->
+        <h3>副标题:small</h3>
+        <h3>h3. Bootstrap heading <small>small text</small></h3>
+        <h3>h3. Bootstrap heading <small>small text</small></h3>
+        <h3>h3. Bootstrap heading <small>small text</small></h3>
+        <hr>
+        <h3>段落:P</h3>
+        <p>段落:设置lead类突出显示</p>
+        <p class="lead">段落:行高:10px</p>
+        <del>del:被删除的标签</del>
+        <s>S标签：无用的文本</s>
+        <ins>ins标签：插入下划线</ins>
+        <u>u标签：插入下划线</u>
+        <hr>
+
+        <h1 id="name3">文字相关辅助类</h1>
+        <hr>
+        <h3>对齐 相关类：text-left/center/right/justify/nowrap</h3>
+        <p class="text-left">text-left 文本左对齐</p>
+        <p class="text-center">text-center 文本居中对齐.</p>
+        <p class="text-right">text-right 文本右对齐</p>
+        <p class="text-justify">text-justify 文本占满全行</p>
+        <p class="text-nowrap">text-nowrap 文本不换行</p>
+        <hr>
+        <!-- 悬浮注释 -->
+        <h3>悬浮注释 相关类：initialism 可以让font-size变小</h3>
+        <abbr title="把鼠标从小女子身上移开"><strong>小女子一枚</strong></abbr>
+
+        <hr>
+        <!-- 引用:blockquote -->
+        <h3>引用: blockquote标签 相关类：blockquote-reverse:将注释添加到右边</h3>
+        <blockquote>
+            <p>直接引用使用p标签</p>
+        </blockquote>
+        <hr>
+        <h3>添加footer标签表明引用来源，cite标签著名来源</h3>
+        <blockquote class="blockquote-reverse">
+            <p>伟大的心胸，应该表现出这样的气概——用笑脸来迎接悲惨的厄运，用百倍的勇气来应付一切的不幸</p>
+            <footer><cite>鲁迅</cite></footer>
+        </blockquote>
+        <hr>
+        <h1>表格</h1>
+        <hr>
+        <h3 id="name4">属性 相关类：table table-striped:增加条纹状 table-bordered:添加边框 table-hover:增加鼠标悬停效果 table-condensed:表格更加紧凑
+        </h3>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <tr>
+                <th>TH</th>
+                <th>TH</th>
+                <th>TH</th>
+            </tr>
+            <tr>
+                <td>TD</td>
+                <td>TD</td>
+                <td>TD</td>
+            </tr>
+            <tr>
+                <td>TD</td>
+                <td>TD</td>
+                <td>TD</td>
+            </tr>
+        </table>
+        <!-- .active 	鼠标悬停在行或单元格上时所设置的颜色
+        .success 	标识成功或积极的动作
+        .info 	标识普通的提示信息或动作
+        .warning 	标识警告或需要用户注意
+        .danger 	标识危险或潜在的带来负面影响的动作 -->
+        <!-- On rows -->
+        <hr>
+        <h3>表格行颜色 相关类 active:激活 success:成功 info:信息 warning:警告 danger:危险</h3>
+        <table class="table">
+            <tr class="active">
+                <th>active</th>
+                <th>active</th>
+                <th>active</th>
+                <th>active</th>
+            </tr>
+            <tr class="success">
+                <td>success</td>
+                <td>success</td>
+                <td>success</td>
+                <td>success</td>
+            </tr>
+            <tr class="danger">
+                <td>danger</td>
+                <td>danger</td>
+                <td>danger</td>
+                <td>danger</td>
+            </tr>
+            <tr class="warning">
+                <td>warning</td>
+                <td>warning</td>
+                <td>warning</td>
+                <td>warning</td>
+            </tr>
+            <tr class="info">
+                <td>info</td>
+                <td>info</td>
+                <td>info</td>
+                <td>info</td>
+            </tr>
+            <!-- On cells (`td` or `th`) -->
+        </table>
+        <hr>
+
+        <!-- 第一次整理点 2019.11.29 上午11：00左右 -->
+        <h1 id="name5">表单</h1>
+        <hr>
+        <!-- 单独的表单控件会被自动赋予一些全局样式。所有设置了 .form-control 类的 <input>、<textarea> 和 
+            <select> 元素都将被默认设置宽度属性为 width: 100%;。 
+            将 label 元素和前面提到的控件包裹在 .form-group 中可以获得最好的排列。 -->
+        <h3>注：单独的表单控件会被自动赋予一些全局样式。所有设置了 .form-control 类的 input、textarea 和
+            select 标签元素都将被默认设置宽度属性为 width: 100%;。
+            将 label 元素和前面提到的控件包裹在 .form-group 中可以获得最好的排列。</h3>
+
+
+        <form>
+            <h3>示例</h3>
+            <!-- 第一个组合:标签加电子邮箱 -->
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+            </div>
+
+            <!-- 第二个组合:标签加密码框 -->
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+
+            <!-- 第三个组合:标签加文件上传加提示信息 -->
+            <div class="form-group">
+                <label for="exampleInputFile">File input</label>
+                <input type="file" id="exampleInputFile">
+            </div>
+            <!-- 多选框 -->
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Check me out
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+        <hr>
+
+
+        <h3>行内表单 相关类 from-inline </h3>
+        <form class="form-inline">
+            <!-- 创建一个表单组 -->
+            <div class="from-group">
+                <!-- sr-only 提供给视障人士阅读 页面不渲染 -->
+                <label for="exampleInputAmout" class="sr-only">Amount (in dollars)</label>
+                <!-- 内嵌一个输入框组 -->
+
+                <div class="input-group">
+                    <div class="input-group-addon">$</div>
+                    <input class="form-control" placeholder="Amount" type="text" id="exampleInputAmout">
+                    <div class="input-group-addon">.00</div>
+                </div>
+
+                <button class="btn btn-danger">click me</button>
+            </div>
+        </form>
+
+        <hr>
+
+
+
+        <h3>栅格类布局 相关类 form-horizontal </h3>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" id="inputEmail3" placeholder="Email" class="form-control">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Remember me
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success">Sign in</button>
+                </div>
+            </div>
+        </form>
+
+
+
+
+        <hr>
+        <h3>支持控件:大部分表单控件、文本输入域控件，
+            还支持所有 HTML5 类型的输入控件: text、password、datetime、datetime-local、date、month、time、week、
+            number、email、url、search、tel 和 color。</h3>
+        <h3>示例</h3>
+        <form action="#" class="form">
+            <input placeholder="text" class="form-control" type="text">
+            <input placeholder="password" class="form-control" type="password">
+            <input placeholder="datetime" class="form-control" type="datetime">
+            <input placeholder="datetime-local" class="form-control" type="datetime-local">
+            <input placeholder="date" class="form-control" type="date">
+            <input placeholder="month" class="form-control" type="month">
+            <input placeholder="time" class="form-control" type="time">
+            <input placeholder="week" class="form-control" type="week">
+            <input placeholder="number" class="form-control" type="number">
+            <input placeholder="email" class="form-control" type="email">
+            <input placeholder="url" class="form-control" type="url">
+            <input placeholder="search" class="form-control" type="search">
+            <input placeholder="ccolor" class="form-control" type="color">
+            <input placeholder="tel" class="form-control" type="tel">
+            <textarea placeholder="textares" class="form-control" rows="3"></textarea>
+            <select class="form-control">
+                <option>下拉列表</option>
+                <option>下拉列表</option>
+                <option>下拉列表i</option>
+                <option>下拉列表</option>
+                <option>下拉列表</option>
+            </select>
+        </form>
+        <hr>
+
+
+        <h3>禁用属性 相关类 disabled 配合fieldset形成禁用域</h3>
+        <form>
+            <fieldset disabled>
+                <div class="form-group">
+                    <label for="disabledTextInput">禁止输入</label>
+                    <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+                </div>
+
+                <div class="form-group">
+                    <label for="disabledSelect">禁止选择</label>
+                    <select id="disabledSelect" class="form-control">
+                        <option>无用选项</option>
+                    </select>
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">禁止勾选
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-success">禁止提交</button>
+            </fieldset>
+
+        </form>
+        <hr>
+
+
+        <h3>校验状态 相关类 .has-warning、.has-error .has-success 添加到父元素,可使添加了.control-label、.form-control 和 .help-block 类的
+            元素都将接受这些校验状态的样式。</h3>
+        <form>
+            <div class="form-group has-success">
+                <label class="control-label" for="inputSuccess1">Input with success</label>
+                <input type="text" class="form-control" id="inputSuccess1" aria-describedby="helpBlock2">
+                <span id="helpBlock2" class="help-block">A block of help text that breaks onto a new line and may extend
+                    beyond one line.</span>
+            </div>
+
+            <div class="form-group has-warning">
+                <label class="control-label" for="inputWarning1">Input with warning</label>
+                <input type="text" class="form-control" id="inputWarning1">
+            </div>
+
+            <div class="form-group has-error">
+                <label class="control-label" for="inputError1">Input with error</label>
+                <input type="text" class="form-control" id="inputError1">
+            </div>
+
+            <div class="has-success">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkboxSuccess" value="option1">
+                        Checkbox with success
+                    </label>
+                </div>
+            </div>
+            <div class="has-warning">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkboxWarning" value="option1">
+                        Checkbox with warning
+                    </label>
+                </div>
+            </div>
+            <div class="has-error">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="checkboxError" value="option1">
+                        Checkbox with error
+                    </label>
+                </div>
+            </div>
+
+        </form>
+        <hr>
+
+        <h3>添加额外图标 相关类 has-feedback 只能使用在input输入框上 效果为输入框后面的图标</h3>
+        <!-- 创建一个表单组，添加额外图标属性和颜色反馈类has.feedback -->
+        <div class="form-group has-success has-feedback">
+            <!-- 添加一个label，一定要使用标签和输入框的组合 -->
+            <label class="control-label" for="inputSuccess2">Input with success</label>
+            <!-- 普通输入框 -->
+            <div class="input-group">
+                <span class="input-group-addon">@</span>
+                <input type="text" class="form-control" id="inputSuccess2" aria-describedby="inputSuccess2Status">
+                <!-- 定义额外图标标签，使用span标签 -->
+                <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+            </div>
+            <!-- sr-only类用于视障人士使用阅读器阅读 页面不渲染 -->
+            <span id="inputSuccess2Status" class="sr-only">(success)</span>
+
+        </div>
+        <hr>
+
+        <h3>控制尺寸表单 相关类 input-lg/sm </h3>
+        <input class="form-control input-lg" type="text" placeholder=".input-lg">
+        <input type="text" class="form-control input-defalut" placeholder=".input-defalut">
+        <input class="form-control input-sm" type="text" placeholder=".input-xs">
+
+        <hr>
+        <h3>按钮 相关类 btn btn-default/primary/succcess/info/warning/danger/link</h3>
+
+        <!-- Standard button -->
+        <!-- default默认样式 -->
+        <button type="button" class="btn btn-default">（默认样式）Default</button>
+        <!-- primary首选项 -->
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <button type="button" class="btn btn-primary">（首选项）Primary</button>
+        <!-- success成功 -->
+        <!-- Indicates a successful or positive action -->
+        <button type="button" class="btn btn-success">（成功）Success</button>
+        <!-- info信息 -->
+        <!-- Contextual button for informational alert messages -->
+        <button type="button" class="btn btn-info">（一般信息）Info</button>
+        <!-- warning警告 -->
+        <!-- Indicates caution should be taken with this action -->
+        <button type="button" class="btn btn-warning">（警告）Warning</button>
+        <!-- danger危险 -->
+        <!-- Indicates a dangerous or potentially negative action -->
+        <button type="button" class="btn btn-danger">（危险）Danger</button>
+        <!-- 连接link -->
+        <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+        <button type="button" class="btn btn-link">（链接）Link</button>
+
+
+        <hr>
+        <h1>情景背景色和辅助类</h1>
+        <hr>
+        <h3 id="name6">情景背景色 相关类 bg-primary/success/info/warning/danger</h3>
+        <p class="bg-primary">首选项</p>
+        <p class="bg-success">成功</p>
+        <p class="bg-info">信息</p>
+        <p class="bg-warning">警告</p>
+        <p class="bg-danger">危险</p>
+
+        <hr>
+        <h3>情景文本颜色 相关类 text-*</h3>
+        <p class="text-muted">文本</p>
+
+        <p class="text-warning">文本</p>
+        <p class="text-danger">文本</p>
+        <hr>
+        <h3>情景背景色 相关类 bg-*</h3>
+        <p class="bg-primary">文本</p>
+        <p class="bg-success">文本</p>
+        <p class="bg-info">文本</p>
+        <p class="bg-warning">文本</p>
+        <p class="bg-danger">文本></p>
+        <hr>
+        <h3>三角形 相关类 caret</h3>
+        <span class="caret"></span>
+        <hr>
+
+        <h3>响应式图片 相关类 img-responsive img-* 设置形状</h3>
+
+
+        <img src="images/bgimg-behind.jfif" style="height:200px;width:300px" alt="Redponsive image"
+            class="img-reaponsive">
+        <img src="images/bgimg.jpg" class="img-responsive img-circle" alt="No responsive">
+
+        <hr>
+        <h1 id="name7">组件</h1>
+        <hr>
+        <h3>字体图标 相关类 glyphicon glyphicon-* 大小设置font-size</h3>
+        <span class="glyphicon glyphicon-queen" style="font-size: 30px;"></span>
+        <span class="glyphicon glyphicon-eye-open" style="font-size: 100px;"></span>
+        <hr>
+
+
+        <h3>警告栏 相关类 alert alert-*</h3>
+        <div class="alert alert-success" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <!-- 供视障者通过辅助阅读器阅读 页面上是不渲染的 -->
+            <span class="sr-only">Error:</span> Enter a valid email address
+        </div>
+        <hr>
+
+
+        <h3>下拉菜单 相关类 dropdown 上拉菜单 dropup dropdown-meun：ul设置为下拉项 dropdown-menu-right：对齐方式</h3>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="true">
+                Dropdown
+                <span class="caret"></span>
+            </button>
+            <!-- 真正的下拉菜单选项 -->
+            <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+        <hr>
+        <h3>按钮组 相关类 btn-group</h3>
+
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default">Left</button>
+            <button type="button" class="btn btn-default">Middle</button>
+            <button type="button" class="btn btn-default">Right</button>
+        </div>
+        <hr>
+        <h3>工具栏 相关类 btn-toolbar:包裹多个btn-group </h3>
+        <div class="btn-toolbar" role="toolbar" aria-label="...">
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default">Left</button>
+                <button type="button" class="btn btn-default">Middle</button>
+                <button type="button" class="btn btn-default">Right</button></div>
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default">Left</button>
+                <button type="button" class="btn btn-default">Middle</button>
+                <button type="button" class="btn btn-default">Right</button></div>
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default">Left</button>
+                <button type="button" class="btn btn-default">Middle</button>
+                <button type="button" class="btn btn-default">Right</button></div>
+        </div>
+
+        <hr>
+
+        <h3>按钮式下拉菜单：按钮+三角形按钮+dropdown-menu</h3>
+        <!-- Split button -->
+        <!-- 创建一个按钮组 将两个样式按钮包含进去 再加一个span三角形 再加下拉框选项 -->
+        <div class="btn-group dropdown">
+            <button type="button" class="btn btn-success">danger</button>
+            <!-- 能展开下拉选项的按钮必须设置 data-toggle 类 -->
+            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </div>
+
+        <hr>
+        <h3 id="name8">导航 相关类 nav nav-tabs</h3>
+        <nav>
+            <ul class="nav nav-tabs">
+                <li role="presentation"><a href="#">home</a></li>
+                <li role="presentation"><a href="#">home</a></li>
+                <li role="presentation"><a href="#">home</a></li>
+            </ul>
+        </nav>
+        <hr>
+
+
+        <h3>胶囊式导航栏 相关类 nav-pill</h3>
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+        <hr>
+        <h3>下拉菜单式导航栏 navbar+dropdown</h3>
+        <nav>
+            <ul class="nav nav-tabs">
+                <li class="dropdown" role="presentation"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                        href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span
+                            class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>我是选项</li>
+                        <li>我是选项</li>
+                        <li>我是选项</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+        <h3>普通导航栏框架：navbar-header+collapse+navbar-form+navbar-right</h3>
+
+
+        <!-- 创建一个导航栏容器  采用默认布局-->
+        <nav class="navbar navbar-default">
+            <!-- 布局容器全屏 -->
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <!-- 创建商业图标区域 可放置企业图标 类名:navbar-header -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <!-- 设置屏幕阅读器可读取，方便残障人士使用网站 -->
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Link</a></li>
+                        <!-- 下拉菜单 -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- 创建导航栏表单 输入框 提交按钮 -->
+                    <form class="navbar-form navbar-left">
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+
+
+                    <!-- 导航栏 -->
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <hr>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand">Logo</a>
+                </div>
+                <!-- 左边的导航栏 -->
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Friday</a></li>
+                    <li><a href="#">Thursday</a></li>
+                    <li><a href="#">Tuesday</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">点击查看详情<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">中山</a></li>
+                            <li><a href="#">青海</a></li>
+                            <li><a href="#">上海</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- 右边表单菜单 -->
+                <div class="navbar-form navbar-right">
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input type="text" class="form-control">
+                    </div>
+                    <button class="btn btn-danger">click me</button>
+                </div>
+                <!-- 中间的表单 -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">查看城市<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">珠海</a></li>
+                            <li><a href="#">北京</a></li>
+                            <li><a href="#">中山</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <hr>
+
+
+        <h3>两端对齐的导航标签页 相关类 nav-justified</h3>
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+        <hr>
+        <h3>树状垂直导航栏 相关类 nav-stacked</h3>
+        <ul class="nav nav-tabs nav-stacked">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+        <hr>
+        <h3>链接灰度化 相关类 disabled</h3>
+        <ul class="nav  nav-tabs nav-stacked">
+            <li role="presentation" class="active"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation" class="disabled"><a href="#">Messages</a></li>
+        </ul>
+        <hr>
+        <h3>导航栏按钮和文本 相关类 navbar-btn navbar-text</h3>
+        <nav>
+            <div class="navbar nav">
+                <button type="button" class="btn btn-default navbar-btn">Sign in</button>
+                <p class="navbar-text">Signed in as Mark Otto</p>
+            </div>
+        </nav>
+        <hr>
+        <h3>路径导航 相关类 breadcrumb</h3>
+
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Library</a></li>
+            <li class="active">Data</li>
+        </ol>
+
+        <hr>
+        <h1 id="name9">分页</h1>
+
+        <h3>分页 相关类 pager pagination</h3>
+        <ul class="pager">
+            <li><a href="#">上一页</a></li>
+            <li><a href="#">中一页</a></li>
+            <li><a href="#">下一页</a></li>
+        </ul>
+        <hr>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <hr>
+
+        <h1 id="name10">标签</h1>
+        <hr>
+        <h3>相关类 lable label-*</h3>
+        <span class="label label-default">Default</span>
+        <span class="label label-primary">Primary</span>
+        <span class="label label-success">Success</span>
+        <span class="label label-info">Info</span>
+        <span class="label label-warning">Warning</span>
+        <span class="label label-danger">Danger</span>
+        <hr>
+        <h3>徽章 相关类 badge</h3>
+        <a href="#">信息<span class="badge">99</span></a>
+        <button class="btn btn-warning" type="button">
+            Messages <span class="badge">99</span>
+        </button>
+        <hr>
+        <h3>巨幕 相关类 jumbotron</h3>
+        <div class="jumbotron">
+            <div class="container">
+                <p>走自己的路让别人说去吧</p>
+                <p>
+                    <p><a style="float: right;" class="btn btn-warning btn-md" href="#" role="button">Learn more</a></p>
+                </p>
+            </div>
+        </div>
+        <hr>
+
+        <h3>媒体对象 相关类 media media-body media-*:对齐方式</h3>
+        <div class="media">
+            <!-- 左边超链接 -->
+            <div class="media-left media-middle">
+                <a href="#">
+                    <img src="images/poem.jpg" style="width: 400px;height: 200px;" alt="waring">
+                </a>
+            </div>
+            <div class="media-body">
+                <h2><strong><em>《鹧鸪天》  宋·李鼐</em></strong></h2>
+                <p> 种得门阑五福全。常珍初喜庆华筵。<br>
+
+                    王环醉拍春衫舞，今见康强九九年。<br>
+
+                    神爽朗，骨清坚。壶天日月旧因缘。<br>
+
+                    从今把定春风笑，且作人间长寿仙。</p>
+            </div>
+        </div>
+        <hr>
+        <h1 id="name11">jquery插件</h1>
+        <hr>
+        <h3>transition.js,禁用过渡效果 $.support.transition=false</h3>
+        <hr>
+        <h3>轮播图 相关类及属性 myCarousel carousel slide data-ride="carousel" data-interval="2500"</h3>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="2500">
+            <!-- 图片容器 -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="images/bgimg-behind.jpg" alt="图片显示异常">
+                </div>
+                <div class="item">
+                    <img src="images/bgimg-behind.jfif" alt="图片显示异常">
+                </div>
+                <div class="item">
+                    <img src="images/buttom-spring-logo.jpg" alt="图片显示异常">
+                </div>
+                <div class="item">
+                    <img src="images/buttom-summer-logo.jpeg" alt="图片显示异常">
+                </div>
+            </div>
+            <!-- 原点指示符 -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+            <!-- 左右控制箭头 -->
+            <a href="#myCarousel" class="left carousel-control" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a href="#myCarousel" class="right carousel-control" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+        </div>
+        <hr>
+        <h3 id="name12">滑动监听 相关类及属性 selector data-offset="0" data-target="#selector" data-spy="scroll" </h3>
+        <div id="selector">
+            <ol>
+                <li><a href="#top">我要去开头鸭！</a></li>
+                <li><a href="#name1" active>栅格系统</a></li>
+                <li><a href="#name2">兼容的常规标签</a></li>
+                <li><a href="#name3">文字相关辅助类</a></li>
+                <li><a href="#name4">表格</a></li>
+                <li><a href="#name5">表单</a></li>
+                <li><a href="#name6">辅助类与情景色</a></li>
+                <li><a href="#name7">组件</a></li>
+                <li><a href="#name8">导航</a></li>
+                <li><a href="#name9">分页</a></li>
+                <li><a href="#name10">标签</a></li>
+                <li><a href="#name11">轮播图</a></li>
+                <li><a href="#name12">滑动监听</a></li>
+                <li><a href="#bottom">我要去结尾鸭！</a></li>
+            </ol>
+        </div>
+        <!-- 底部导航栏 -->
+        <div id="bottom" class="jumbotron">
+            <div class="container">
+                <p id="time"></p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- bootstrap jquery插件 -->
+    <!-- 
+        1.动画过渡transition
+        2.模态栏:modal
+        3.下拉查单:dropdown
+        4.选项卡:Tab
+        5.旋转轮播;carousel
+        6.滚动监听scrollspy
+     -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins)  引入jquery -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            setInterval(getTime, 1000);
+
+            function getTime() {
+                var date = new Date();
+                $("#time").text(date.toString());
+                console.log(date.toString());
+                console.log($("#time"));
+            }
+        })
+    </script>
+</body>
+
+</html>
